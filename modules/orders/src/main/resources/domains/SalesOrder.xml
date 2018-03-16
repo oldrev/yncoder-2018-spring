@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_4.2.xsd">
+
+  <module name="orders" package="com.axelor.orders.db"/>
+
+  <sequence name="orders.order.seq" initial="1" increment="1" padding="5" prefix="#"/>
+
+  <entity name="SalesOrder" cachable="false">
+    <string name="name" required="true" unique="true" title="单号" sequence="orders.order.seq"/>
+    <datetime name="orderDate" title="下单时间" />
+    <many-to-one name="customer" ref="com.axelor.orders.db.Customer" required="true" title="客户" />
+    <one-to-many name="details" ref="com.axelor.orders.db.SalesOrderDetail" mappedBy="salesOrder" title="明细"/>
+    <string name="notes" large="true" title="备注"/>
+  </entity>
+
+  <entity name="SalesOrderDetail" cachable="false">
+    <many-to-one name="salesOrder" ref="com.axelor.orders.db.SalesOrder" required="true" title="订单" />
+    <integer name="sequence" />
+    <string name="product" required="true" title="产品"/>
+    <decimal name="unitPrice" required="true" title="单价"/>
+    <decimal name="quantity" required="true" title="数量"/>
+  </entity>
+  
+</domain-models>

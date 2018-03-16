@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views 
+    xmlns="http://axelor.com/xml/ns/object-views" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_4.2.xsd">
+
+    <grid name="salesorder-grid" title="订单列表" model="com.axelor.orders.db.SalesOrder">
+        <field name="name"/>
+        <field name="customer"/>
+    </grid>
+
+    <form name="salesorders-form" title="订单信息" model="com.axelor.orders.db.SalesOrder">
+        <panel title="总览">
+            <field name="name" />
+            <field name="orderDate"/>
+            <field name="customer"/>
+        </panel>
+        <panel-tabs>
+            <panel-related title="明细" field="details" editable="true" orderBy="sequence" canMove="true" >
+                <field name="product"/>
+                <field name="unitPrice"/>
+                <field name="quantity"/>
+            </panel-related>
+            <panel title="备注">
+                <field name="notes" showTitle="false" colSpan="12" widget="html" />
+            </panel>
+        </panel-tabs>
+        <panel sidebar="true">
+            <field name="createdOn"/>
+            <field name="createdBy"/>
+            <field name="updatedOn"/>
+            <field name="updatedBy"/>
+        </panel>
+    </form>
+
+    <calendar name="salesorder-calendar" title="订单日历" model="com.axelor.orders.db.SalesOrder" 
+              editable="false" eventStart="orderDate" eventLength="8" 
+              colorBy="customer">
+        <field name="name" />
+    </calendar>
+
+</object-views>
+

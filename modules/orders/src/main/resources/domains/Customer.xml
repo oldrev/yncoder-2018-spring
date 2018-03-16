@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_4.2.xsd">
+
+  <module name="orders" package="com.axelor.orders.db"/>
+
+  <entity name="Customer" cachable="true">
+    <string name="code" required="true" unique="true" title="客户编号"/>
+    <string name="name" required="true" namecolumn="true" title="姓名"/>
+    <string name="address" title="地址"/>
+    <string name="notes" large="true" title="备注"/>
+    <one-to-many name="orders" ref="com.axelor.orders.db.SalesOrder" mappedBy="customer" />
+  </entity>
+  
+</domain-models>

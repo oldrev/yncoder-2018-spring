@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_4.2.xsd">
+
+	<menuitem name="menu-hello" order="-1000" title="Hello" icon="fa-folder" />
+
+	<menuitem name="menu-hello-all" parent="menu-hello"
+    	title="All HelloOrders"
+    	action="hello.all"/>
+
+	<action-view name="hello.all" title="All HelloOrders" model="com.axelor.orders.db.HelloOrders">
+    	<view type="grid" name="hello-orders-grid"/>
+	    <view type="form" name="hello-orders-form"/>
+	</action-view>
+
+	<menuitem name="menu-customer-all" parent="menu-hello"
+    	title="客户"
+    	action="customer.all"/>
+
+	<action-view name="customer.all" title="全部客户" model="com.axelor.orders.db.Customer">
+    	<view type="grid" name="customer-grid"/>
+    	<view type="form" name="customer-form"/>
+	</action-view>
+
+	<menuitem name="menu-order-all" parent="menu-hello"
+    	title="订单" action="order.all" />
+
+	<action-view name="order.all" title="全部订单" model="com.axelor.orders.db.SalesOrder">
+    	<view type="grid" name="salesorder-grid"/>
+        <view type="form" name="salesorder-form"/>
+    	<view type="calendar" name="salesorder-calendar"/>
+	</action-view>
+
+</object-views>
